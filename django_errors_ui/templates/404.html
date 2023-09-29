@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block base_content %}
+<div
+<img src="{% static image|default:'django_errors_ui/visual-404.jpg' %}" alt="Error image">
+<p>
+{{ title }}
+</p>
+<p>
+{{ description }}
+</p>
+<p>
+{{ extra_content }}
+</p>
+</div>
+{% endblock %}
