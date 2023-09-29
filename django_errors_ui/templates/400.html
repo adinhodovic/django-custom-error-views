@@ -4,11 +4,11 @@
     <div class="container mx-auto max-w-7xl grid justify-items-center">
         <img class="mt-5"
              style="max-height: 500px"
-             src="{% static image|default:'django_errors_ui/visual-403.jpg' %}"
+             src="{% static image|default:'django_errors_ui/visual-400.jpg' %}"
              alt="Error image">
-        <p class="font-bold text-3xl">{{ title|default:"Forbidden page, access denied." }}</p>
+        <p class="font-bold text-3xl">{{ title|default:"Error, bad request." }}</p>
         <p class="mt-5 max-w-3xl text-center">
-            {{ description|default:"Sorry you are not allowed to access that page. You can find loads to explore on the home page." }}
+            {{ description|default:"This ia a malformed or illegal request.  You can find loads to explore on the home page." }}
         </p>
         <p class="mt-2 max-w-3xl text-center">{{ extra_content }}</p>
         {% if exception and render_exception %}

@@ -1,0 +1,17 @@
+{% load static %}
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap"
+      rel="stylesheet">
+<div class="container mx-auto max-w-7xl grid justify-items-center"></div>
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['Poppins'],
+          },
+        }
+      }
+    }
+</script>
+{% block content %}{% endblock %}

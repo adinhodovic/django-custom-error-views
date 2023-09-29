@@ -1,3 +1,7 @@
+"""
+    Django errors UI views
+"""
+
 from urllib.parse import quote
 
 from django.conf import settings
@@ -16,6 +20,36 @@ ERROR_400_TEMPLATE_NAME = "400.html"
 ERROR_500_TEMPLATE_NAME = "500.html"
 
 custom_settings = getattr(settings, "DJANGO_ERRORS_UI", None)
+
+
+def extract_settings(key):
+    """
+    Extract settings from DJANGO_ERRORS_UI
+    """
+    if not custom_settings:
+        return {}
+    context = {}
+    error_settings = custom_settings.get(key)
+    if error_settings:
+        title = error_settings.get("title")
+        if title:
+            context["title"] = title
+        description = error_settings.get("description")
+        if description:
+            context["description"] = description
+        extra_content = error_settings.get("extra_content")
+        if extra_content:
+            context["extra_content"] = extra_content
+        render_exception = error_settings.get("render_exception")
+        if render_exception:
+            context["render_exception"] = str(render_exception)
+    return context
+
+
+settings_400 = extract_settings("400")
+settings_403 = extract_settings("403")
+settings_404 = extract_settings("404")
+settings_500 = extract_settings("500")
 
 
 @requires_csrf_token
@@ -46,20 +80,7 @@ def handler404(request, exception, template_name=ERROR_404_TEMPLATE_NAME):
     context = {
         "request_path": quote(request.path),
         "exception": exception_repr,
-    }
-
-    if custom_settings:
-        settings_404 = custom_settings.get("404")
-        if settings_404:
-            title = settings_404.get("title")
-            if title:
-                context["title"] = title
-            description = settings_404.get("description")
-            if description:
-                context["description"] = description
-            extra_content = settings_404.get("extra_content")
-            if extra_content:
-                context["extra_content"] = extra_content
+    } | settings_404
 
     template = loader.get_template(template_name)
     body = template.render(context, request)
@@ -72,18 +93,21 @@ def handler500(request, template_name=ERROR_500_TEMPLATE_NAME):
     500 error handler.
     """
     template = loader.get_template(template_name)
-    return HttpResponseServerError(template.render())
+    body = template.render(settings_500, request)
+
+    return HttpResponseServerError(body)
 
 
 @requires_csrf_token
-def handler400(request, exception, template_name=ERROR_400_TEMPLATE_NAME):
+def handler400(
+    request, exception, template_name=ERROR_400_TEMPLATE_NAME
+):  # pylint: disable=unused-argument
     """
     400 error handler.
     """
     template = loader.get_template(template_name)
-    # No exception content is passed to the template, to not disclose any
-    # sensitive information.
-    return HttpResponseBadRequest(template.render())
+    body = template.render(settings_400, request)
+    return HttpResponseBadRequest(body)
 
 
 @requires_csrf_token
@@ -97,7 +121,7 @@ def handler403(request, exception, template_name=ERROR_403_TEMPLATE_NAME):
             The message from the exception which triggered the 403 (if one was
             supplied).
     """
+    context = {"exception": str(exception)} | settings_403
     template = loader.get_template(template_name)
-    return HttpResponseForbidden(
-        template.render(request=request, context={"exception": str(exception)})
-    )
+    body = template.render(context, request)
+    return HttpResponseForbidden(body)
