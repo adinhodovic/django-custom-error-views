@@ -63,24 +63,9 @@ AUTHENTICATION_BACKENDS = [
     "django.contrib.auth.backends.ModelBackend",
 ]
 
-EMAIL_BACKEND = "django.core.mail.backends.console.EmailBackend"
 INTERNAL_IPS = ["127.0.0.1"]
 ALLOWED_HOSTS = ["*"]
 SITE_ID = 1
 STATIC_URL = "/static/"
 MEDIA_URL = "/media/"
 MEDIA_ROOT = Path(__file__).parent / "media"
-
-ACCOUNT_EMAIL_REQUIRED = True
-ACCOUNT_AUTHENTICATION_METHOD = "email"
-ACCOUNT_USERNAME_REQUIRED = False
-ACCOUNT_EMAIL_VERIFICATION = "mandatory"
-ACCOUNT_AUTHENTICATION_METHOD = "email"
-ACCOUNT_LOGIN_ATTEMPTS_LIMIT = 1000
-
-DJANGO_ERRORS_UI = {
-    "404": {
-        "title": "OOPS! THIS IS AN ERROR.",
-        "description": "Lorem ipsum dolor sit amet consectetur. Sit vitae aliquam eu purus eu orci. Nisi at vel lorem tincidunt tortor quisque.",
-    }
-}

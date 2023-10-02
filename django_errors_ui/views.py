@@ -1,5 +1,5 @@
 """
-    Django errors UI views
+Django errors UI views
 """
 
 from urllib.parse import quote
@@ -19,13 +19,12 @@ ERROR_403_TEMPLATE_NAME = "403.html"
 ERROR_400_TEMPLATE_NAME = "400.html"
 ERROR_500_TEMPLATE_NAME = "500.html"
 
-custom_settings = getattr(settings, "DJANGO_ERRORS_UI", None)
-
 
 def extract_settings(key):
     """
     Extract settings from DJANGO_ERRORS_UI
     """
+    custom_settings = getattr(settings, "DJANGO_ERRORS_UI", None)
     if not custom_settings:
         return {}
     context = {}
@@ -46,12 +45,6 @@ def extract_settings(key):
     return context
 
 
-settings_400 = extract_settings("400")
-settings_403 = extract_settings("403")
-settings_404 = extract_settings("404")
-settings_500 = extract_settings("500")
-
-
 @requires_csrf_token
 def handler404(request, exception, template_name=ERROR_404_TEMPLATE_NAME):
     """
@@ -66,6 +59,8 @@ def handler404(request, exception, template_name=ERROR_404_TEMPLATE_NAME):
             The message from the exception which triggered the 404 (if one was
             supplied), or the exception class name
     """
+    settings_404 = extract_settings("404")
+
     exception_repr = exception.__class__.__name__
     # Try to get an "interesting" exception message, if any (and not the ugly
     # Resolver404 dictionary)
@@ -92,6 +87,8 @@ def handler500(request, template_name=ERROR_500_TEMPLATE_NAME):
     """
     500 error handler.
     """
+    settings_500 = extract_settings("500")
+
     template = loader.get_template(template_name)
     body = template.render(settings_500, request)
 
@@ -105,8 +102,12 @@ def handler400(
     """
     400 error handler.
     """
+    settings_400 = extract_settings("400")
+
     template = loader.get_template(template_name)
     body = template.render(settings_400, request)
+    # No exception content is passed to the template, to not disclose any
+    # sensitive information.
     return HttpResponseBadRequest(body)
 
 
@@ -121,6 +122,8 @@ def handler403(request, exception, template_name=ERROR_403_TEMPLATE_NAME):
             The message from the exception which triggered the 403 (if one was
             supplied).
     """
+    settings_403 = extract_settings("403")
+
     context = {"exception": str(exception)} | settings_403
     template = loader.get_template(template_name)
     body = template.render(context, request)

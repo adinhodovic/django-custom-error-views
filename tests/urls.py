@@ -1,7 +1,20 @@
-from django.conf import settings
+"""
+URL Configuration for django_errors_ui
+"""
+
 from django.contrib import admin
 from django.urls import include, path
-from django.views import defaults as default_views
+
+from django_errors_ui.views import handler400 as ui_handler400
+from django_errors_ui.views import handler403 as ui_handler403
+from django_errors_ui.views import handler404 as ui_handler404
+from django_errors_ui.views import handler500 as ui_handler500
+
+handler400 = "django_errors_ui.views.handler400"  # pylint: disable=invalid-name
+handler403 = "django_errors_ui.views.handler403"  # pylint: disable=invalid-name
+handler404 = "django_errors_ui.views.handler404"  # pylint: disable=invalid-name
+handler500 = "django_errors_ui.views.handler500"  # pylint: disable=invalid-name
+
 
 urlpatterns = [
     path("admin/", admin.site.urls),
@@ -9,18 +22,18 @@ urlpatterns = [
     path("__debug__/", include("debug_toolbar.urls")),
     path(
         "400/",
-        default_views.bad_request,
+        ui_handler400,
         kwargs={"exception": Exception("Bad Request!")},
     ),
     path(
         "403/",
-        default_views.permission_denied,
+        ui_handler403,
         kwargs={"exception": Exception("Permission Denied")},
     ),
     path(
         "404/",
-        default_views.page_not_found,
+        ui_handler404,
         kwargs={"exception": Exception("Page not Found")},
     ),
-    path("500/", default_views.server_error),
+    path("500/", ui_handler500),
 ]

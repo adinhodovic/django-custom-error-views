@@ -11,19 +11,19 @@ license = "MIT"
 packages = [
     { include = "django_errors_ui" },
 ]
-include = ["django_errors_ui/static/django_errors_ui/output.css"]
 
 [tool.poetry.dependencies]
 python = ">=3.8,<4.0"
+django = "^4.2.5"
 
 [tool.poetry.group.dev.dependencies]
 black = "22.3.0"
 isort = "^5.10.1"
-pytest = "^7.0.0"
+pytest = "^7.4.2"
 pytest-cov = "2.8.1"
-pytest-django = "4.1.0"
-mypy = "0.930"
-mypy-extensions = "0.4.3"
+pytest-django = "^4.5.2"
+mypy = "^1.5.1"
+mypy-extensions = "^1.0.0"
 pylint = "2.15.3"
 pylint-django = "2.5.3"
 ptipython = "^1.0.1"
@@ -33,6 +33,47 @@ django-browser-reload = "^1.3.0"
 pudb = "2019.1"
 django-debug-toolbar = "^3.2.4"
 Werkzeug = "^2.0.2"
-Django = "^4.0.2"
 django-click = "^2.3.0"
 djlint = "^1.34.0"
+django-stubs = "^4.2.4"
+tox = "^4.11.3"
+pytest-mock = "^3.11.1"
+pytest-clarity = "^1.0.1"
+
+[tool.pytest.ini_options]
+addopts = "--ds=tests.settings"
+python_files = "tests.py test_*.py"
+norecursedirs = "node_modules .venv"
+
+[tool.isort]
+skip_glob = "**/migrations/*.py,**/fixtures/*.py,infra/**/*.py"
+# https://github.com/psf/black/issues/251#issuecomment-535187912
+multi_line_output = 3
+include_trailing_comma = true
+force_grid_wrap = 0
+use_parentheses = true
+ensure_newline_before_comments = true
+line_length = 88
+
+[tool.mypy]
+python_version = "3.10"
+check_untyped_defs = true
+ignore_missing_imports = true
+warn_unused_ignores = true
+warn_redundant_casts = true
+warn_unused_configs = true
+plugins = ["mypy_django_plugin.main"]
+exclude = [".venv","migrations.*"]
+
+[tool.django-stubs]
+django_settings_module = "tests.settings"
+
+[tool.pylint.'MASTER']
+load-plugins = "pylint_django"
+django-settings-module = "tests.settings"
+
+[tool.pylint.'FORMAT']
+max-line-length = 120
+
+[tool.pylint.'MESSAGES CONTROL']
+disable = "missing-docstring,invalid-name"
