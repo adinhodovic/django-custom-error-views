@@ -1,10 +1,10 @@
-{% extends "django_errors_ui/base.html" %}
+{% extends "django_custom_error_views/base.html" %}
 {% load static %}
 {% block content %}
     <div class="container mx-auto max-w-7xl grid justify-items-center">
         <img class="mt-5"
              style="max-height: 500px"
-             src="{% static image|default:'django_errors_ui/visual-400.jpg' %}"
+             src="{% static image|default:'django_custom_error_views/visual-400.jpg' %}"
              alt="Error image">
         <p class="font-bold text-3xl">{{ title|default:"Error, bad request." }}</p>
         <p class="mt-5 max-w-3xl text-center">

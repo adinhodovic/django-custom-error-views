@@ -22,7 +22,7 @@ DJANGO_APPS = [
 
 THIRD_PARTY_APPS = [
     "django_extensions",
-    "django_errors_ui",
+    "django_custom_error_views",
     "django_browser_reload",
     "debug_toolbar",
 ]

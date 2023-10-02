@@ -3,13 +3,13 @@ requires = ["poetry-core>=1.0.0"]
 build-backend = "poetry.core.masonry.api"
 
 [tool.poetry]
-name = "django-errors-ui"
+name = "django-custom-error-views"
 version = "0.1.0"
 description = ""
 authors = ["Adin Hodovic <hodovicadin@gmail.com>"]
 license = "MIT"
 packages = [
-    { include = "django_errors_ui" },
+    { include = "django_custom_error_views" },
 ]
 
 [tool.poetry.dependencies]

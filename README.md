@@ -14,11 +14,11 @@ UI templates for HTTP errors built with Tailwind.
 ## Installation
 
 ```
-pip install django-errors-ui
+pip install django-custom-error-views
 ```
 ```python
 INSTALLED_APPS = [
-    "django_errors_ui",
+    "django_custom_error_views",
 ]
 ```
 **Note**:
@@ -41,8 +41,8 @@ convert "$1" -crop 1072x901+436+200 crop_signin.png
 
 ```sh
 # Clone the repo
-git clone git@github.com:danihodovic/django-errors-ui.git
-cd django-errors-ui.git
+git clone git@github.com:danihodovic/django-custom-error-views.git
+cd django-custom-error-views.git
 
 # Create the virtual env
 python -m venv .venv

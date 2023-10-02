@@ -14,7 +14,7 @@ def test_error_views(page, client):
     res = client.get(f"/{page}/")
     assert res.status_code == int(page)
     assert res.templates[0].name == f"{page}.html"
-    assert f'src="/static/django_errors_ui/visual-{page}.jpg"' in res.content.decode()
+    assert f'src="/static/django_custom_error_views/visual-{page}.jpg"' in res.content.decode()
 
 
 @pytest.mark.parametrize(
@@ -59,7 +59,7 @@ def test_error_views_settings(page, client, settings):
     assert res.templates[0].name == f"{page}.html"
 
     content = res.content.decode()
-    assert f'src="/static/django_errors_ui/visual-{page}.jpg"' in content
+    assert f'src="/static/django_custom_error_views/visual-{page}.jpg"' in content
     assert settings.DJANGO_ERRORS_UI[page]["title"] in content
     assert settings.DJANGO_ERRORS_UI[page]["description"] in content
     assert settings.DJANGO_ERRORS_UI[page]["extra_content"] in content

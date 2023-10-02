@@ -2,4 +2,4 @@ from django.apps import AppConfig
 
 
 class DjangoErrorsUiConfig(AppConfig):
-    name = "django_errors_ui"
+    name = "django_custom_error_views"
