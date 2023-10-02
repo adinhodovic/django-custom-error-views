@@ -22,7 +22,7 @@ jobs:
       - name: Set up Python
         uses: actions/setup-python@v1
         with:
-          python-version: 3.10
+          python-version: "3.10"
 
       - name: Install Poetry
         uses: snok/install-poetry@v1
@@ -55,7 +55,7 @@ jobs:
         exclude:
           - python-version: 3.9
             dj-version: django42
-          - python-version: 3.10
+          - python-version: "3.10"
             dj-version: django42
     steps:
       - name: Install gettext
@@ -106,10 +106,10 @@ jobs:
     steps:
       - uses: actions/checkout@v1
 
-      - name: Set up Python 3.9
+      - name: Set up Python
         uses: actions/setup-python@v1
         with:
-          python-version: 3.10
+          python-version: "3.10"
 
       - name: Install dependencies
         run: |
