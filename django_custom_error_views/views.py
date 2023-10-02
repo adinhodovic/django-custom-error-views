@@ -41,7 +41,7 @@ def extract_settings(key):
             context["extra_content"] = extra_content
         render_exception = error_settings.get("render_exception")
         if render_exception:
-            context["render_exception"] = str(render_exception)
+            context["render_exception"] = render_exception
     return context
 
 
