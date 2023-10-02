@@ -5,11 +5,31 @@ build-backend = "poetry.core.masonry.api"
 [tool.poetry]
 name = "django-custom-error-views"
 version = "0.1.0"
-description = ""
 authors = ["Adin Hodovic <hodovicadin@gmail.com>"]
 license = "MIT"
-packages = [
-    { include = "django_custom_error_views" },
+readme = "README.md"
+homepage = "https://github.com/adinhodovic/django-custom-error-views"
+repository = "https://github.com/adinhodovic/django-custom-error-views"
+documentation = "https://github.com/adinhodovic/django-custom-error-views"
+description = "Prebuilt and customizable error views for Django."
+keywords = [
+  "Django",
+  "Error",
+  "HTTP"
+]
+classifiers = [
+  "Development Status :: 5 - Production/Stable",
+  "Environment :: Web Environment",
+  "Framework :: Django",
+  "Framework :: Django :: 3.2",
+  "Framework :: Django :: 4.2",
+  "Intended Audience :: Developers",
+  "License :: OSI Approved :: MIT License",
+  "Operating System :: OS Independent",
+  "Programming Language :: Python",
+  "Programming Language :: Python :: 3",
+  "Programming Language :: Python :: 3.10",
+  "Programming Language :: Python :: 3.11",
 ]
 
 [tool.poetry.dependencies]
