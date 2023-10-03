@@ -8,7 +8,7 @@
         <a href="/">
             <img class="mt-5"
                  style="max-height: 45px"
-                 src="{% static company_logo %}"
+                 src="{{ STATIC_URL }}/{{ company_logo }}"
                  onerror="this.onerror=null; this.src='{{ company_logo }}'"
                  alt="Company Logo">
         </a>
