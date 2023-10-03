@@ -22,9 +22,9 @@ ERROR_500_TEMPLATE_NAME = "500.html"
 
 def extract_settings(key):
     """
-    Extract settings from DJANGO_ERRORS_UI
+    Extract settings from DJANGO_CUSTOM_ERROR_VIEWS
     """
-    custom_settings = getattr(settings, "DJANGO_ERRORS_UI", None)
+    custom_settings = getattr(settings, "DJANGO_CUSTOM_ERROR_VIEWS", None)
     if not custom_settings:
         return {}
     context = {}
