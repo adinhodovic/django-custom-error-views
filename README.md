@@ -3,13 +3,16 @@
 Prebuilt and customizable error views for Django.
 
 * [Features](#features)
-    * [Customizing Error Pages](#customizing-error-pages)
 * [Installation](#installation)
-* [Screenshots](#screenshots)
+    * [Customizing Error Pages (Optional)](#customizing-error-pages)
+* [Preview](#preview)
 
 ## Features
 
 * Responsive design suitable for device sizes from mobile to desktop.
+* Supports 400,403,404 and 500 HTTP errors by default.
+* Minimal setup required to render the templates.
+* Customizable error views through Django settings using custom error handlers.
 
 ## Installation
 
@@ -73,6 +76,7 @@ And then you can add the following settings for each page.
 
 ```py
 DJANGO_CUSTOM_ERROR_VIEWS = {
+    "company_logo": "/images/icon.png", # Static image or full URL
     "400": {
         "title": "Custom 400 error.",
         "description": "Custom 400 description.",
@@ -100,6 +104,7 @@ DJANGO_CUSTOM_ERROR_VIEWS = {
 
 Each option does the following:
 
+* `company_logo` - Adds a company logo to the top of the page. Either a static (`{% static %}`) image or a full URL to an image
 * `title` - Changes the title for the page to a custom one.
 * `description` - Changes the description for the error to a custom one.
 * `extra_content` - Adds extra text to the page below the title and description.
@@ -113,3 +118,7 @@ You can preview the error pages live at:
 * [403 HTTP status code](https://hodovi.cc/403)
 * [404 HTTP status code](https://hodovi.cc/404)
 * [500 HTTP status code](https://hodovi.cc/500) - Has the status code 200 only in the demo.
+
+Image preview:
+
+![500-error](images/500-error.png)
