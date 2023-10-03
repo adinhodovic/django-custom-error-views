@@ -17,7 +17,7 @@
          style="max-height: 500px"
          src="{% static image|default:'django_custom_error_views/visual-400.jpg' %}"
          alt="Error image">
-    <p class="font-bold text-3xl font-[Poppins]">{{ title|default:"Error, bad request." }}</p>
+    <p class="font-bold text-3xl font-[Poppins] text-center">{{ title|default:"Error, bad request." }}</p>
     <p class="mt-5 max-w-xl text-center">
         {{ description|default:"This ia a malformed or illegal request.  You can find loads to explore on the home page." }}
     </p>
