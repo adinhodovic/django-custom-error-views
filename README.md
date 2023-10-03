@@ -9,7 +9,7 @@ Prebuilt and customizable error views for Django.
 
 ## Features
 
-* Responsive design suitable for device sizes from mobile to desktop
+* Responsive design suitable for device sizes from mobile to desktop.
 
 ## Installation
 
@@ -23,7 +23,7 @@ INSTALLED_APPS = [
 ]
 ```
 
-Now Django will by default use the templates for 400, 403, 404 and 500 pages.
+That's all! Now Django will by default use the templates from the package for 400, 403, 404 and 500 pages. However, if you want to customize the pages by adding a logo, changing text etc. Then you'll need the next section as well.
 
 ### Customizing Error Pages
 
