@@ -130,6 +130,9 @@ jobs:
           virtualenvs-in-project: true
           installer-parallel: true
 
+      - name: Install Node Dependencies
+        run: npm ci
+
       - name: Build Static Assets
         run: npm run build
 
