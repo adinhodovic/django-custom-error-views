@@ -4,7 +4,7 @@ from django_custom_error_views.views import extract_settings
 
 
 def test_extract_settings(settings):
-    settings.DJANGO_ERRORS_UI = {
+    settings.DJANGO_CUSTOM_ERROR_VIEWS = {
         "400": {
             "title": "Custom 400 error.",
             "description": "Custom 400 description.",
@@ -55,7 +55,7 @@ def test_error_views(page, client):
     ],
 )
 def test_error_views_settings(page, client, settings):
-    settings.DJANGO_ERRORS_UI = {
+    settings.DJANGO_CUSTOM_ERROR_VIEWS = {
         "400": {
             "title": "Custom 400 error.",
             "description": "Custom 400 description.",
@@ -88,8 +88,8 @@ def test_error_views_settings(page, client, settings):
 
     content = res.content.decode()
     assert f'src="/static/django_custom_error_views/visual-{page}.jpg"' in content
-    assert settings.DJANGO_ERRORS_UI[page]["title"] in content
-    assert settings.DJANGO_ERRORS_UI[page]["description"] in content
-    assert settings.DJANGO_ERRORS_UI[page]["extra_content"] in content
-    if settings.DJANGO_ERRORS_UI[page].get("render_exception"):
-        assert settings.DJANGO_ERRORS_UI[page]["exception"] in content
+    assert settings.DJANGO_CUSTOM_ERROR_VIEWS[page]["title"] in content
+    assert settings.DJANGO_CUSTOM_ERROR_VIEWS[page]["description"] in content
+    assert settings.DJANGO_CUSTOM_ERROR_VIEWS[page]["extra_content"] in content
+    if settings.DJANGO_CUSTOM_ERROR_VIEWS[page].get("render_exception"):
+        assert settings.DJANGO_CUSTOM_ERROR_VIEWS[page]["exception"] in content
