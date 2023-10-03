@@ -4,17 +4,25 @@
     Error
 {% endblock title %}
 {% block content %}
-    <div class="container mx-auto max-w-7xl grid justify-items-center">
-        <img class="mt-5"
-             style="max-height: 500px"
-             src="{% static image|default:'django_custom_error_views/visual-500.jpg' %}"
-             alt="Error image">
-        <p class="font-bold text-3xl">{{ title|default:"Oops! This is an error." }}</p>
-        <p class="mt-5 max-w-3xl text-center">
-            {{ description|default:"Something went wrong on our end. You can go back to the home page or try this page again later." }}
-        </p>
-        {% if extra_content %}<p class="mt-2 max-w-3xl text-center">{{ extra_content }}</p>{% endif %}
-        <a class="mt-5 rounded bg-blue-600 px-2 py-1 text-md font-semibold text-white shadow-sm hover:bg-blue-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-600"
-           href="/">Return Home</a>
-    </div>
+    {% if company_logo %}
+        <a href="/">
+            <img class="mt-5"
+                 style="max-height: 45px"
+                 src="{% static company_logo %}"
+                 onerror="this.onerror=null; this.src='{{ company_logo }}'"
+                 alt="Company Logo">
+        </a>
+    {% endif %}
+    <img class="mt-5"
+         style="max-height: 500px"
+         src="{% static image|default:'django_custom_error_views/visual-500.jpg' %}"
+         alt="Error image">
+    <p class="font-bold text-3xl font-[Poppins]">{{ title|default:"Oops! This is an error." }}</p>
+    <p class="mt-5 max-w-xl text-center">
+        {{ description|default:"Something went wrong on our end. You can go back to the home page or try this page again later." }}
+    </p>
+    {% if extra_content %}<p class="mt-2 max-w-xl text-center">{{ extra_content }}</p>{% endif %}
+    <a type="button"
+       class="mt-5 rounded-full font-semibold bg-white px-4 py-2.5 text-sm text-blue-800 shadow-sm ring-1 ring-inset ring-blue-800 hover:bg-gray-50"
+       href="/">Return Home</a>
 {% endblock %}

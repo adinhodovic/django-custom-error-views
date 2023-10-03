@@ -4,7 +4,9 @@ from django_custom_error_views.views import extract_settings
 
 
 def test_extract_settings(settings):
+    company_logo = ("https://www.example.com/logo.png",)
     settings.DJANGO_CUSTOM_ERROR_VIEWS = {
+        "company_logo": company_logo,
         "400": {
             "title": "Custom 400 error.",
             "description": "Custom 400 description.",
@@ -14,16 +16,20 @@ def test_extract_settings(settings):
     }
 
     assert extract_settings("400") == {
+        "company_logo": company_logo,
         "title": "Custom 400 error.",
         "description": "Custom 400 description.",
     }
 
     assert extract_settings("403") == {
+        "company_logo": company_logo,
         "extra_content": "403 extras.",
         "render_exception": True,
     }
 
-    assert not extract_settings("404")
+    assert extract_settings("404") == {
+        "company_logo": company_logo,
+    }
 
 
 @pytest.mark.parametrize(
@@ -56,6 +62,7 @@ def test_error_views(page, client):
 )
 def test_error_views_settings(page, client, settings):
     settings.DJANGO_CUSTOM_ERROR_VIEWS = {
+        "company_logo": "https://www.example.com/logo.png",
         "400": {
             "title": "Custom 400 error.",
             "description": "Custom 400 description.",
@@ -88,6 +95,8 @@ def test_error_views_settings(page, client, settings):
 
     content = res.content.decode()
     assert f'src="/static/django_custom_error_views/visual-{page}.jpg"' in content
+    assert settings.DJANGO_CUSTOM_ERROR_VIEWS["company_logo"] in content
+
     assert settings.DJANGO_CUSTOM_ERROR_VIEWS[page]["title"] in content
     assert settings.DJANGO_CUSTOM_ERROR_VIEWS[page]["description"] in content
     assert settings.DJANGO_CUSTOM_ERROR_VIEWS[page]["extra_content"] in content
