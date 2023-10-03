@@ -117,6 +117,11 @@ jobs:
         with:
           python-version: "3.10"
 
+      - name: Set up Node
+        uses: actions/setup-node@v3
+        with:
+          node-version: 18
+
       - name: Install Poetry
         uses: snok/install-poetry@v1
         with:
@@ -124,6 +129,9 @@ jobs:
           virtualenvs-create: true
           virtualenvs-in-project: true
           installer-parallel: true
+
+      - name: Build Static Assets
+        run: npm run build
 
       - name: Build Package
         run: poetry build
