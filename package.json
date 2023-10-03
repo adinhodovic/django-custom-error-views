@@ -1,0 +1,13 @@
+{
+  "name": "django-custom-error-views",
+  "scripts": {
+    "build:watch": "npx tailwindcss -i django_custom_error_views/static/django_custom_error_views/input.css -o django_custom_error_views/static/django_custom_error_views/output.css --watch",
+    "build": "npx tailwindcss -i django_custom_error_views/static/django_custom_error_views/input.css -o django_custom_error_views/static/django_custom_error_views/output.css"
+  },
+  "devDependencies": {
+    "eslint": "^8.50.0",
+    "eslint-config-airbnb-base": "^15.0.0",
+    "eslint-plugin-import": "^2.28.1",
+    "tailwindcss": "^3.3.3"
+  }
+}

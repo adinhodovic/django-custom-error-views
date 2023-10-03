@@ -1,12 +1,15 @@
 {% extends "django_custom_error_views/base.html" %}
 {% load static %}
+{% block title %}
+    Page not found
+{% endblock title %}
 {% block content %}
     <div class="container mx-auto max-w-7xl grid justify-items-center">
         <img class="mt-5"
              style="max-height: 500px"
              src="{% static image|default:'django_custom_error_views/visual-404.jpg' %}"
              alt="Error image">
-        <p class="font-bold text-3xl">{{ title|default:"OOPS! Page not found" }}</p>
+        <p class="font-bold text-3xl">{{ title|default:"OOPS! Page not found." }}</p>
         <p class="mt-5 max-w-3xl text-center">
             {{ description|default:"Sorry we can't find that page. You can find loads to explore on the home page." }}
         </p>
