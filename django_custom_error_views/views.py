@@ -29,6 +29,9 @@ def extract_settings(key):
         return {}
     context = {}
     error_settings = custom_settings.get(key)
+    if custom_settings.get("company_logo"):
+        context["company_logo"] = custom_settings["company_logo"]
+
     if error_settings:
         title = error_settings.get("title")
         if title:
