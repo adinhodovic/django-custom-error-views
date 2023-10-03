@@ -17,7 +17,7 @@
          style="max-height: 500px"
          src="{% static image|default:'django_custom_error_views/visual-500.jpg' %}"
          alt="Error image">
-    <p class="font-bold text-3xl font-[Poppins]">{{ title|default:"Oops! This is an error." }}</p>
+    <p class="font-bold text-3xl font-[Poppins] text-center">{{ title|default:"Oops! This is an error." }}</p>
     <p class="mt-5 max-w-xl text-center">
         {{ description|default:"Something went wrong on our end. You can go back to the home page or try this page again later." }}
     </p>

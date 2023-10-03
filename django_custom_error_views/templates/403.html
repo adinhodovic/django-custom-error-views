@@ -17,7 +17,7 @@
          style="max-height: 500px"
          src="{% static image|default:'django_custom_error_views/visual-403.jpg' %}"
          alt="Error image">
-    <p class="font-bold text-3xl font-[Poppins]">{{ title|default:"Forbidden page, access denied." }}</p>
+    <p class="font-bold text-3xl font-[Poppins] text-center">{{ title|default:"Forbidden page, access denied." }}</p>
     <p class="mt-5 max-w-xl text-center">
         {{ description|default:"Sorry you are not allowed to access that page. You can find loads to explore on the home page." }}
     </p>
