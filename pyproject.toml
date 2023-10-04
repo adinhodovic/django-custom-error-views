@@ -4,7 +4,7 @@ build-backend = "poetry.core.masonry.api"
 
 [tool.poetry]
 name = "django-custom-error-views"
-version = "0.2.3"
+version = "0.2.4"
 authors = ["Adin Hodovic <hodovicadin@gmail.com>"]
 license = "MIT"
 readme = "README.md"
