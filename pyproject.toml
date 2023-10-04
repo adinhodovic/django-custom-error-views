@@ -28,6 +28,7 @@ classifiers = [
   "Operating System :: OS Independent",
   "Programming Language :: Python",
   "Programming Language :: Python :: 3",
+  "Programming Language :: Python :: 3.9",
   "Programming Language :: Python :: 3.10",
   "Programming Language :: Python :: 3.11",
 ]
@@ -37,7 +38,7 @@ packages = [
 include = ["django_custom_error_views/static/django_custom_error_views/output.css"]
 
 [tool.poetry.dependencies]
-python = ">=3.10,<4.0.0"
+python = ">=3.9,<4.0.0"
 django = "^3.2.0 || ^4.0.0"
 
 [tool.poetry.group.dev.dependencies]
