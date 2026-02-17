@@ -99,9 +99,7 @@ def handler500(request, template_name=ERROR_500_TEMPLATE_NAME):
 
 
 @requires_csrf_token
-def handler400(
-    request, exception, template_name=ERROR_400_TEMPLATE_NAME
-):  # pylint: disable=unused-argument
+def handler400(request, exception, template_name=ERROR_400_TEMPLATE_NAME):  # pylint: disable=unused-argument
     """
     400 error handler.
     """
