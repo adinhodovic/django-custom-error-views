@@ -1,3 +1,4 @@
 include LICENSE
 include README.md
+include django_custom_error_views/static/django_custom_error_views/output.css
 recursive-include django_custom_error_views *.html *.png *.gif *js *.css *jpg *jpeg *svg *py
